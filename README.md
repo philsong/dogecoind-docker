@@ -1,3 +1,10 @@
+# Docker recipe for [dogecoind](https://github.com/dogecoin/dogecoin)
+
+See the global picture how this container interacts with other components to run Dogeparty:
+
+[Global Component Overview](http://www.inkpad.io/1GMXYwxl4Q)
+
+
 ## Build
 
     docker build -t dogecoind:v1 .
