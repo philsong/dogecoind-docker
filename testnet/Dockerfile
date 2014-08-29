@@ -19,7 +19,7 @@ RUN mkdir src
 WORKDIR /dogecoin/src
 RUN git clone https://github.com/dogecoin/dogecoin.git
 WORKDIR /dogecoin/src/dogecoin
-RUN git checkout 1.8-dev
+RUN git master
 RUN ./autogen.sh && ./configure --without-miniupnpc && make
 
 ADD dogecoin.conf /dogecoin/.dogecoin/dogecoin.conf
