@@ -1,16 +1,16 @@
 ## Build
 
-    docker build -t dogecoind:1.8-dev .
+    docker build -t dogecoind:testnet .
 
 
 ## Instantiate Data Container
 
-    docker run -d --name=dogecoind-testnet-data dogecoind:1.8-dev bash
+    docker run -d --name=dogecoind-testnet-data dogecoind:testnet bash
 
 
 ## Run Container
 
-    docker run -it --name=dogecoind-testnet --volumes-from=dogecoind-testnet-data dogecoind:1.8-dev bash
+    docker run -it --name=dogecoind-testnet --volumes-from=dogecoind-testnet-data dogecoind:testnet bash
 
 
 ## Run Process
@@ -20,7 +20,7 @@
 
 ## Debug
 
-    docker run -it --rm --volumes-from=dogecoind-testnet-data dogecoind:1.8-dev bash
+    docker run -it --rm --volumes-from=dogecoind-testnet-data dogecoind:testnet bash
 
 
 ## Test
