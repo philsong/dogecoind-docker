@@ -47,7 +47,7 @@ docker start dogecoind-testnet
 docker attach dogecoind-testnet
 ``
 
-###### Detaching from container
+#### Detaching from container
 
 In order to keep the container running while leaving the container shell:
 	
@@ -57,7 +57,7 @@ and back again:
 	
 ``docker attach dogecoind-testnet``
 	
-###### Stopping the container
+##### Stopping the container
 
 From the host shell:
 	
