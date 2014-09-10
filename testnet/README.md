@@ -6,24 +6,24 @@ See the global picture how this container interacts with other components to run
 
 ## Build
 
-Pre-requisite:[Docker installation](https://docs.docker.com/).
+Pre-requisite: [Docker installation](https://docs.docker.com/).
 
-	Issue commands to build according to recipe found in ``your/path/to/dogecoind-docker/testnet/Dockerfile``.
+Installed Docker? Great. Now build this docker project according to the recipe found at ``your/path/to/dogecoind-docker/testnet/Dockerfile``.
 	
-	```
-	cd /your/path/to/dogecoind-docker/testnet
-    docker build -t dogecoind:testnet .
-	```
-	Wait for ``Successfully built [image_id]`` (may take 10+ mins. on first run).
+```
+cd /your/path/to/dogecoind-docker/testnet
+docker build -t dogecoind:testnet .
+```
+Wait for ``Successfully built [image_id]`` (may take 10+ mins. on first run).
 	
-	Then issue command ```docker images``` to find a result similar to this:
+Then issue command ```docker images``` to find a result similar to this:
 	
-	| REPOSITORY |   TAG   |  IMAGE ID    |    CREATED     | VIRTUAL SIZE |
-	| ---------- | ------- | ------------ | -------------- | ------------ |
-    | dogecoind  | testnet | ba3f4163b790 | 30 minutes ago | 1.791 GB |
-    | ubuntu     | 14.04   | 826544226fdc | 4 days ago     | 194.2 MB |
+| REPOSITORY |   TAG   |  IMAGE ID    |    CREATED     | VIRTUAL SIZE |
+| ---------- | ------- | ------------ | -------------- | ------------ |
+| dogecoind  | testnet | ba3f4163b790 | 30 minutes ago | 1.791 GB |
+| ubuntu     | 14.04   | 826544226fdc | 4 days ago     | 194.2 MB |
 	
-	What you have now is a Docker _image_ identified by _ba3f4163b790_ (think your id here), stored in a _repository_ called _dogecoind_ and _tagged_ as _testnet_.
+What you have now is a Docker _image_ identified by _ba3f4163b790_ (think your id here), stored in a _repository_ called _dogecoind_ and _tagged_ as _testnet_.
 
 ## Instantiate Data Container
 
