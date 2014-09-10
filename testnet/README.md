@@ -14,7 +14,7 @@ Installed Docker? Great. Now build this docker project according to the recipe f
 cd /your/path/to/dogecoind-docker/testnet
 docker build -t dogecoind:testnet .
 ```
-Wait for ``Successfully built [image_id]`` (may take 10+ mins. on first run).
+Wait for ``Successfully built [your image_id presented here]`` (may take 10+ mins. on first run).
 	
 Then issue command ```docker images``` to find a result similar to this:
 	
@@ -27,73 +27,76 @@ What you have now is a Docker _image_ identified by _ba3f4163b790_ (think your i
 
 ## Instantiate Data Container
 
-	In order to separate dogecoind _execution_ from its _data_, we'll now create a separate Docker data volume _container_ for use by the dogecoin software. This makes it possible for future builds of the dogecoin software to reuse the data, instead of having to wait for the long-running process of re-reading the data off the dogecoin peers. 
+In order to separate dogecoind _execution_ from its _data_, we will now create a separate Docker data volume _container_ for use by the dogecoin software. This makes it possible for future builds of the dogecoin software to reuse the data, instead of having to wait for the long-running process of re-reading the data off the dogecoin peers. 
 
-    ``docker run -d --name=dogecoind-testnet-data dogecoind:testnet bash``
+``docker run -d --name=dogecoind-testnet-data dogecoind:testnet bash``
 
 
 ## Run Container
 
-	First time: Create, Launch & Attach to a docker _container_ named _dogecoind-testnet_, using the image _dogecoind:testnet_ and the data container volume _dogecoind-testnet-data:
+First time: Create, Launch & Attach to a docker _container_ named _dogecoind-testnet_, using the image _dogecoind:testnet_ and the data container volume _dogecoind-testnet-data:
 
-    ``docker run -it --name=dogecoind-testnet --volumes-from=dogecoind-testnet-data dogecoind:testnet bash``
+``docker run -it --name=dogecoind-testnet --volumes-from=dogecoind-testnet-data dogecoind:testnet bash``
     
-    OR
+OR
     
-	Consecutive times: Launch & Attach to the docker container:
+Consecutive times: Launch & Attach to the docker container:
 	
-	``
-	docker start dogecoind-testnet
-	docker attach dogecoind-testnet
-	``
+``
+docker start dogecoind-testnet
+docker attach dogecoind-testnet
+``
 
 ### Detaching from container
 
-	In order to keep the container running while leaving the container shell:
+In order to keep the container running while leaving the container shell:
 	
-	``ctrl-p ctrl-q``
+``ctrl-p ctrl-q``
 	
-	and back again:
+and back again:
 	
-	``docker attach dogecoind-testnet``
+``docker attach dogecoind-testnet``
 	
 ### Stopping the container
 
-	From the host shell:
+From the host shell:
 	
-	``docker stop dogecoind-testnet``
+``docker stop dogecoind-testnet``
 	
-	From the container shell:
+From the container shell:
 	
-	``exit``   
+``exit``   
 
 ## Run Process
 
-	Run the dogecoind daemon from within the container shell:
+Run the dogecoind daemon from within the container shell:
 
-    ``dogecoind -addnode=54.237.28.96 -addnode=107.170.14.48 -addnode=54.74.34.153 -addnode=178.201.149.20 -addnode=54.217.8.3 -disablesafemode &``
+``dogecoind -addnode=54.237.28.96 -addnode=107.170.14.48 -addnode=54.74.34.153 -addnode=178.201.149.20 -addnode=54.217.8.3 -disablesafemode &``
 
-	Then check the daemon status by means of its Command-Line Interface:
+Then check the daemon status by means of its Command-Line Interface:
 	
-	``dogecoin-cli getinfo``
+``dogecoin-cli getinfo``
 
 ## Debug 
 
-	[I Dunno how this is used. Or why. I do get that it's a nameless container that is being removed when it exits, but cannot see how it relates to a basic usage scenario or how its more usable for debugging.  /Peter ]
-    docker run -it --rm --volumes-from=dogecoind-testnet-data dogecoind:testnet bash
+[I Dunno how this is used. Or why. I do get that it's a nameless container that is being removed when it exits, but cannot see how it relates to a basic usage scenario or how its more usable for debugging.  /Peter ]
+``docker run -it --rm --volumes-from=dogecoind-testnet-data dogecoind:testnet bash``
 
 
 ## Test
 
-	To test how other docker containers access _dogecoind-testnet_, we first need to get the IP address of it:
+To test how other docker containers access _dogecoind-testnet_, we first need to get the IP address of it:
 	
-	``docker inspect dogecoind-testnet | grep IPAddress``
+``docker inspect dogecoind-testnet | grep IPAddress``
 	
-	Then edit the _curl_ requests below and run them from the host shell ( or from ``boot2docker ssh`` if running on MacOsX, see [how-to-use-docker-on-os-x-the-missing-guide](http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide))
+Then edit the _curl_ requests below and run them from the host shell ( or from ``boot2docker ssh`` if running on MacOsX, see [how-to-use-docker-on-os-x-the-missing-guide](http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide))
 
-    curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://[insert IP here]:44555/
-    curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://[Insert IP here]:44555/
+``
+curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://[insert IP here]:44555/
 
-    [What's this doing here, and why? /Peter]
-    curl -s https://chain.so/api/v2/get_info/DOGETEST | json data | json blocks
+curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://[Insert IP here]:44555/
+``
+
+[What's this doing here, and why? /Peter]
+``curl -s https://chain.so/api/v2/get_info/DOGETEST | json data | json blocks``
 
