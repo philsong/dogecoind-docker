@@ -6,7 +6,7 @@ See the global picture how this container interacts with other components to run
 
 ## Build
 
-	Pre-requisite:[Docker installation](https://docs.docker.com/).
+Pre-requisite:[Docker installation](https://docs.docker.com/).
 
 	Issue commands to build according to recipe found in ``your/path/to/dogecoind-docker/testnet/Dockerfile``.
 	
