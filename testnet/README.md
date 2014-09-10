@@ -91,11 +91,11 @@ To test how other docker containers access _dogecoind-testnet_, we first need to
 	
 Then edit the _curl_ requests below and run them from the host shell ( or from ``boot2docker ssh`` if running on MacOsX, see [how-to-use-docker-on-os-x-the-missing-guide](http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide))
 
-``
-curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://[insert IP here]:44555/
 
-curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://[Insert IP here]:44555/
-``
+	curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://[insert IP here]:44555/
+
+	curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://[Insert IP here]:44555/
+
 
 [What's this doing here, and why? /Peter]
 ``curl -s https://chain.so/api/v2/get_info/DOGETEST | json data | json blocks``
