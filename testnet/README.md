@@ -34,7 +34,7 @@ In order to separate dogecoind _execution_ from its _data_, we will now create a
 
 ## Run Container
 
-First time: Create, Launch & Attach to a docker _container_ named _dogecoind-testnet_, using the image _dogecoind:testnet_ and the data container volume _dogecoind-testnet-data:
+First time: Create, Launch & Attach to a docker _container_ named _dogecoind-testnet_, using the image _dogecoind:testnet_ and the data container volume _dogecoind-testnet-data_:
 
 ``docker run -it --name=dogecoind-testnet --volumes-from=dogecoind-testnet-data dogecoind:testnet bash``
     
