@@ -98,5 +98,6 @@ Then edit the _curl_ requests below and run them from the host shell ( or from `
 
 
 [What's this doing here, and why? /Peter]
-``curl -s https://chain.so/api/v2/get_info/DOGETEST | json data | json blocks``
+
+	curl -s https://chain.so/api/v2/get_info/DOGETEST | json data | json blocks
 
