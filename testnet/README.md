@@ -80,7 +80,8 @@ Then check the daemon status by means of its Command-Line Interface:
 ## Debug 
 
 [I Dunno how this is used. Or why. I do get that it's a nameless container that is being removed when it exits, but cannot see how it relates to a basic usage scenario or how its more usable for debugging.  /Peter ]
-``docker run -it --rm --volumes-from=dogecoind-testnet-data dogecoind:testnet bash``
+
+	docker run -it --rm --volumes-from=dogecoind-testnet-data dogecoind:testnet bash
 
 
 ## Test
@@ -97,7 +98,7 @@ Then edit the _curl_ requests below and run them from the host shell ( or from `
 	curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://[Insert IP here]:44555/
 
 
-[What's this doing here, and why? /Peter]
+[What's this last curl request doing here, and why? /Peter]
 
 	curl -s https://chain.so/api/v2/get_info/DOGETEST | json data | json blocks
 
