@@ -57,7 +57,7 @@ and back again:
 	
 ``docker attach dogecoind-testnet``
 	
-##### Stopping the container
+#### Stopping the container
 
 From the host shell:
 	
