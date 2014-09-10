@@ -8,7 +8,7 @@ See the global picture how this container interacts with other components to run
 
 Pre-requisite: [Docker installation](https://docs.docker.com/).
 
-Installed Docker? Great. Now build this docker project according to the recipe found at ``your/path/to/dogecoind-docker/testnet/Dockerfile``.
+Now build this docker project according to the recipe found at ``your/path/to/dogecoind-docker/testnet/Dockerfile``.
 	
 ```
 cd /your/path/to/dogecoind-docker/testnet
@@ -77,13 +77,6 @@ Then check the daemon status by means of its Command-Line Interface:
 	
 ``dogecoin-cli getinfo``
 
-## Debug 
-
-[I Dunno how this is used. Or why. I do get that it's a nameless container that is being removed when it exits, but cannot see how it relates to a basic usage scenario or how its more usable for debugging.  /Peter ]
-
-	docker run -it --rm --volumes-from=dogecoind-testnet-data dogecoind:testnet bash
-
-
 ## Test
 
 To test how other docker containers access _dogecoind-testnet_, we first need to get the IP address of it:
@@ -98,7 +91,7 @@ Then edit the _curl_ requests below and run them from the host shell ( or from `
 	curl --user user:pass --data-binary '{"jsonrpc": "1.0", "id":"0", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://[Insert IP here]:44555/
 
 
-[What's this last curl request doing here, and why? /Peter]
+Finally, you might want to compare the number of blocks downloaded by your newly running dogecoin docker container with the state of the block chain out there:
 
-	curl -s https://chain.so/api/v2/get_info/DOGETEST | json data | json blocks
+	curl -s https://chain.so/api/v2/get_info/DOGETEST
 
