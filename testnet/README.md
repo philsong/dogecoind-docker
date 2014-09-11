@@ -4,6 +4,8 @@ See the global picture how this container interacts with other components to run
 
 [Global Component Overview](http://www.inkpad.io/1GMXYwxl4Q)
 
+If you intend to build an entire testnet stack of Dogeparty using Docker, you will definitely start here. Therefore, this README provides some complementary information about handling Docker itself, smoothing out the rough edges of being new to both technologies.
+
 ## Build
 
 Pre-requisite: [Docker installation](https://docs.docker.com/).
