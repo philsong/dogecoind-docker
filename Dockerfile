@@ -10,6 +10,7 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get -y install wget vim unzip
 
 RUN adduser --disabled-password --home /dogecoin --gecos "" dogecoin
+RUN echo "dogecoin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 WORKDIR /usr/local/src
 RUN wget https://github.com/dogecoin/dogecoin/releases/download/v1.8.0/dogecoin-1.8.0-linux64.zip
